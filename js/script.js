@@ -3,5 +3,9 @@ document.addEventListener('DOMContentLoaded', function() {
     submitForm.addEventListener('submit', function (event) {
         event.preventDefault();
         addBook();
-    })
- })
+    });
+});
+
+document.addEventListener('ondatasaved', () => {
+    console.log('Data berhasil disimpan.');
+});

@@ -8,3 +8,11 @@ function isStorageExist() {
     }
     return true;
 }
+
+function saveDataToStorage() {
+    if (isStorageExist()) {
+        const JsonStringData = JSON.stringify(books);
+        localStorage.setItem(STORAGE_KEY, JsonStringData);
+        document.dispatchEvent(new Event("ondatasaved"));
+    }
+}

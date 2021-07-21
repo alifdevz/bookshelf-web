@@ -4,6 +4,8 @@ function addBook() {
     const author = document.getElementById('inputBookAuthor').value;
     const year = document.getElementById('inputBookYear').value;
     const isComplete = document.getElementById('inputBookIsComplete').checked;
+    const bookObject = createBookObject(id, title, author, year, isComplete);
+    todo.push(bookObject);
 
     console.log('id = ' + id);
     console.log('title = ' + title);
@@ -24,6 +26,8 @@ function addBook() {
     } else {
         unReadBooks.append(book);
     }
+
+    saveDataToStorage();
 }
 
 function renderToHtml(title, author, year, isComplete) {

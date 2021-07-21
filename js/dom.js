@@ -3,17 +3,17 @@ function addBook() {
     const title = document.getElementById('inputBookTitle').value;
     const author = document.getElementById('inputBookAuthor').value;
     const year = document.getElementById('inputBookYear').value;
-    const isComplete = document.getElementById('inputBookIsComplete').checked;
-    const bookObject = createBookObject(id, title, author, year, isComplete);
-    todo.push(bookObject);
+    const isRead = document.getElementById('inputBookIsComplete').checked;
+    const bookObject = createBookObject(id, title, author, year, isRead);
+    books.push(bookObject);
 
     console.log('id = ' + id);
     console.log('title = ' + title);
     console.log('author = ' + author);
     console.log('year = ' + year);
-    console.log('isComplete = ' + isComplete);
+    console.log('isComplete = ' + isRead);
 
-    const book = renderToHtml(title, author, year, isComplete);
+    const book = renderToHtml(title, author, year, isRead);
 
     const unReadBooks = document.getElementById('incompleteBookshelfList');
     unReadBooks.classList.add('book_list');
@@ -21,7 +21,7 @@ function addBook() {
     const readBooks = document.getElementById('completeBookshelfList');
     readBooks.classList.add('book_list');
     
-    if (isComplete) {
+    if (isRead) {
         readBooks.append(book);
     } else {
         unReadBooks.append(book);
@@ -30,7 +30,7 @@ function addBook() {
     saveDataToStorage();
 }
 
-function renderToHtml(title, author, year, isComplete) {
+function renderToHtml(title, author, year, isRead) {
     // item container
     const container = document.createElement('article');
     container.classList.add('book_item');
@@ -50,7 +50,7 @@ function renderToHtml(title, author, year, isComplete) {
 
     const bookStatusButton = document.createElement('button');
     bookStatusButton.classList.add('green');
-    if (isComplete) {
+    if (isRead) {
         bookStatusButton.innerText = 'Belum Selesai Dibaca';
     } else {
         bookStatusButton.innerText = 'Selesai Dibaca';

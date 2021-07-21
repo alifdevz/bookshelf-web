@@ -16,3 +16,13 @@ function saveDataToStorage() {
         document.dispatchEvent(new Event("ondatasaved"));
     }
 }
+
+function createBookObject(id, title, author, year, isRead) {
+    return {
+        id,
+        title,
+        author,
+        year,
+        isRead
+    };
+}

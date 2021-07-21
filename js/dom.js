@@ -47,9 +47,9 @@ function renderToHtml(title, author, year, isComplete) {
     const bookStatusButton = document.createElement('button');
     bookStatusButton.classList.add('green');
     if (isComplete) {
-        bookStatusButton.innerText = 'Selesai Dibaca';
-    } else {
         bookStatusButton.innerText = 'Belum Selesai Dibaca';
+    } else {
+        bookStatusButton.innerText = 'Selesai Dibaca';
     }
 
     const deleteBookButton = document.createElement('button');

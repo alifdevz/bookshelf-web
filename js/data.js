@@ -26,3 +26,27 @@ function createBookObject(id, title, author, year, isRead) {
         isRead
     };
 }
+
+function refreshBookshelfData() {
+    const unReadBooks = document.getElementById('incompleteBookshelfList');
+    const readBooks = document.getElementById('completeBookshelfList');
+
+    for (book of books) {
+        const bookElement = renderToHtml(book.title, book.author, book.year, book.isRead);
+        if (book.isRead) {
+            readBooks.append(bookElement);
+        } else {
+            unReadBooks.append(bookElement);
+        }
+    }
+}
+
+function loadDataFromStorage() {
+    const serializedData = localStorage.getItem(STORAGE_KEY);
+    let jsonData = JSON.parse(serializedData);
+
+    if (jsonData !== null) {
+        books = jsonData;
+    }
+    document.dispatchEvent(new Event('ondataloaded'));
+}

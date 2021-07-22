@@ -7,12 +7,7 @@ function addBook() {
     const bookObject = createBookObject(id, title, author, year, isRead);
     books.push(bookObject);
 
-    console.log('id = ' + id);
-    console.log('title = ' + title);
-    console.log('author = ' + author);
-    console.log('year = ' + year);
-    console.log('isComplete = ' + isRead);
-
+    // render book data to html element
     const book = renderToHtml(id, title, author, year, isRead);
 
     const unReadBooks = document.getElementById('incompleteBookshelfList');

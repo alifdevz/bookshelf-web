@@ -62,6 +62,7 @@ function loadDataFromStorage() {
 function deleteDataFromStorage(id) {
     bookIndex = findBookIndex(id);
     books.splice(bookIndex, 1);
+    document.dispatchEvent(new Event('ondatadeleted'));
     saveDataToStorage();
 }
 

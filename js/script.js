@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 document.addEventListener('ondatasaved', () => {
-    console.log('Data berhasil disimpan.');
+    // console.log('Data berhasil disimpan.');
 });
 
 document.addEventListener('ondataloaded', () => {
@@ -21,4 +21,8 @@ document.addEventListener('ondataloaded', () => {
 document.addEventListener('ondatamoved', () => {
     console.log('Buku telah dipindahkan ke rak lain.');
     refreshBookshelfData();
+});
+
+document.addEventListener('ondatadeleted', () => {
+    console.log('Buku telah dihapus.')
 });

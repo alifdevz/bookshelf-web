@@ -65,16 +65,15 @@ function renderToHtml(id, title, author, year, isRead) {
         bookStatusButton.innerText = 'Selesai Dibaca';
     }
 
-
     // delete button
     const deleteBookButton = document.createElement('button');
     deleteBookButton.classList.add('red');
     deleteBookButton.innerText = 'Hapus Buku';
     deleteBookButton.addEventListener('click', function() {
-        let result = confirm('Are you sure to delete ' + titleElement.innerText);
+        let result = confirm('Apakah Anda yakin mau menghapus ' + title);
         if (result) {
             container.remove();
-            deleteDataFromStorage(parseInt(idElement.innerText));
+            deleteDataFromStorage(id);
         }
     });
 

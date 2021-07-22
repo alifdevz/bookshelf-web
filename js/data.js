@@ -32,7 +32,7 @@ function refreshBookshelfData() {
     const readBooks = document.getElementById('completeBookshelfList');
 
     for (book of books) {
-        const bookElement = renderToHtml(book.title, book.author, book.year, book.isRead);
+        const bookElement = renderToHtml(book.id, book.title, book.author, book.year, book.isRead);
         if (book.isRead) {
             readBooks.append(bookElement);
         } else {

@@ -13,7 +13,7 @@ function addBook() {
     console.log('year = ' + year);
     console.log('isComplete = ' + isRead);
 
-    const book = renderToHtml(title, author, year, isRead);
+    const book = renderToHtml(id, title, author, year, isRead);
 
     const unReadBooks = document.getElementById('incompleteBookshelfList');
     unReadBooks.classList.add('book_list');
@@ -30,17 +30,25 @@ function addBook() {
     saveDataToStorage();
 }
 
-function renderToHtml(title, author, year, isRead) {
+function renderToHtml(id, title, author, year, isRead) {
     // item container
     const container = document.createElement('article');
     container.classList.add('book_item');
 
+    // set id element to hidden
+    const idElement = document.createElement('p');
+    idElement.innerText = id;
+    idElement.setAttribute('hidden', 'true');
+
+    // title
     const titleElement = document.createElement('h3');
     titleElement.innerText = title;
 
+    // author
     const authorElement = document.createElement('p');
     authorElement.innerText = author;
 
+    // year
     const yearElement = document.createElement('p');
     yearElement.innerText = year;
 

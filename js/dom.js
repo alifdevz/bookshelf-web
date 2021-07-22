@@ -30,11 +30,6 @@ function renderToHtml(id, title, author, year, isRead) {
     const container = document.createElement('article');
     container.classList.add('book_item');
 
-    // set id element to hidden
-    const idElement = document.createElement('p');
-    idElement.innerText = id;
-    idElement.setAttribute('hidden', 'true');
-
     // title
     const titleElement = document.createElement('h3');
     titleElement.innerText = title;

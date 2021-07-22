@@ -86,3 +86,30 @@ function renderToHtml(id, title, author, year, isRead) {
     
     return container;
 }
+
+function searchBook(title) {
+    const unReadBooks = document.getElementById('incompleteBookshelfList');
+    const readBooks = document.getElementById('completeBookshelfList');
+    // clear all data first
+    while (unReadBooks.firstChild) {
+        unReadBooks.removeChild(unReadBooks.lastChild);
+    }
+    while (readBooks.firstChild) {
+        readBooks.removeChild(readBooks.lastChild);
+    }
+
+    // populate the books data
+    for (book of books) {
+        const regex = new RegExp(title);
+        if (regex.test(book.title)) {
+            const bookElement = renderToHtml(book.id, book.title, book.author, book.year, book.isRead);
+            if (book.isRead) {
+                readBooks.append(bookElement);
+            } else {
+                unReadBooks.append(bookElement);
+            }
+        } else if (title === '' || title === null || title === undefined) {
+            loadDataFromStorage();
+        }
+    }
+}

@@ -56,6 +56,7 @@ function renderToHtml(id, title, author, year, isRead) {
     const buttonsContainer = document.createElement('div');
     buttonsContainer.classList.add('action');
 
+    // book status button (read or not read)
     const bookStatusButton = document.createElement('button');
     bookStatusButton.classList.add('green');
     if (isRead) {
@@ -64,9 +65,18 @@ function renderToHtml(id, title, author, year, isRead) {
         bookStatusButton.innerText = 'Selesai Dibaca';
     }
 
+
+    // delete button
     const deleteBookButton = document.createElement('button');
     deleteBookButton.classList.add('red');
     deleteBookButton.innerText = 'Hapus Buku';
+    deleteBookButton.addEventListener('click', function() {
+        let result = confirm('Are you sure to delete ' + titleElement.innerText);
+        if (result) {
+            container.remove();
+            deleteDataFromStorage(parseInt(idElement.innerText));
+        }
+    });
 
     // append buttons
     buttonsContainer.append(bookStatusButton, deleteBookButton);

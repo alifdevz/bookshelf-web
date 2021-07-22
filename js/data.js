@@ -50,3 +50,20 @@ function loadDataFromStorage() {
     }
     document.dispatchEvent(new Event('ondataloaded'));
 }
+
+function deleteDataFromStorage(id) {
+    bookIndex = findBookIndex(id);
+    books.splice(bookIndex, 1);
+    saveDataToStorage();
+}
+
+function findBookIndex(id) {
+    index = 0;
+    for (book of books) {
+        if (book.id === id) {
+            return index;
+        }
+        index++;
+    }
+    return -1;
+}

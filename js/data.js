@@ -30,7 +30,15 @@ function createBookObject(id, title, author, year, isRead) {
 function refreshBookshelfData() {
     const unReadBooks = document.getElementById('incompleteBookshelfList');
     const readBooks = document.getElementById('completeBookshelfList');
+    // clear all data first
+    while (unReadBooks.firstChild) {
+        unReadBooks.removeChild(unReadBooks.lastChild);
+    }
+    while (readBooks.firstChild) {
+        readBooks.removeChild(readBooks.lastChild);
+    }
 
+    // populate the data
     for (book of books) {
         const bookElement = renderToHtml(book.id, book.title, book.author, book.year, book.isRead);
         if (book.isRead) {
@@ -66,4 +74,24 @@ function findBookIndex(id) {
         index++;
     }
     return -1;
+}
+
+function markBookAsNotRead(id) {
+    for (book of books) {
+        if (book.id === id) {
+            book.isRead = false;
+            saveDataToStorage();
+            return;
+        }
+    }
+}
+
+function markBookAsRead(id) {
+    for (book of books) {
+        if (book.id === id) {
+            book.isRead = true;
+            saveDataToStorage();
+            return;
+        }
+    }
 }

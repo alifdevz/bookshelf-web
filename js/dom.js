@@ -64,6 +64,17 @@ function renderToHtml(id, title, author, year, isRead) {
     } else {
         bookStatusButton.innerText = 'Selesai Dibaca';
     }
+    bookStatusButton.addEventListener('click', function() {
+        if (isRead) {
+            container.remove();
+            markBookAsNotRead(id);
+            document.dispatchEvent(new Event('ondatamoved'));
+        } else {
+            container.remove();
+            markBookAsRead(id);
+            document.dispatchEvent(new Event('ondatamoved'));
+        }
+    });
 
     // delete button
     const deleteBookButton = document.createElement('button');
@@ -82,5 +93,6 @@ function renderToHtml(id, title, author, year, isRead) {
 
     // append all contents in the book item
     container.append(titleElement, authorElement, yearElement, buttonsContainer);
+    
     return container;
 }

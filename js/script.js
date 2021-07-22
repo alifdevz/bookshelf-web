@@ -17,3 +17,8 @@ document.addEventListener('ondatasaved', () => {
 document.addEventListener('ondataloaded', () => {
     refreshBookshelfData();
 });
+
+document.addEventListener('ondatamoved', () => {
+    console.log('Buku telah dipindahkan ke rak lain.');
+    refreshBookshelfData();
+});
